@@ -1,0 +1,11 @@
+<div
+    class="toast-container"
+    [ngClass]="{ show: isVisible == true }"
+    aria-live="polite"
+    role="alert"
+>
+    <div [ngClass]="[toastType, 'toast']">
+        <!-- <div class="toast-title">{{ message?.msgTitle }}</div> -->
+        <div class="toast-message">{{ message?.msgTxt }}</div>
+    </div>
+</div>

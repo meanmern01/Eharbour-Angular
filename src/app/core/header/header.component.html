@@ -1,0 +1,29 @@
+<div class="header">
+    <mat-grid-list cols="12" rowHeight="60px">
+      <mat-grid-tile [colspan]=2 class="header-list" >
+        <img src="assets/temp/text.PNG">
+        <h2>E-HARBOUR</h2>
+        <img  src="assets/temp/hamburger.PNG">
+      </mat-grid-tile>
+       <mat-grid-tile [colspan]=10 class="menu-list"> 
+        <div class="profile-cont">
+          <!-- <input type="text" placeholder="search by name">
+          <div class="user-profile"></div>  -->
+          <p *ngIf="userRole != 'Ship Owner'"> Welcome <b> {{ userName }} </b> <br> User Role: <b> {{ userRole }} </b> </p>
+          <p *ngIf="userRole == 'Ship Owner'"> Welcome <b> {{ userName }} </b> <br> Vessel Name: <b> {{ vesselName }} </b> <br> User Role: <b> {{ userRole }} </b> </p>
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <img src="assets/temp/Desktop/downarrow.png">
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="onLogout()">
+              <mat-icon>login</mat-icon>
+              <span>Logout</span>
+            </button>
+          </mat-menu>
+
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+

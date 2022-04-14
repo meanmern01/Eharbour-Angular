@@ -1,0 +1,52 @@
+<div class="side-bar-content" (clickOutside)="onClickedOutside($event)">
+
+  <div class="side-menu" [class.toggle-bar]="menubar">
+
+    <div class="top-menu">
+      <div class="i-icon">
+        <!-- <img src="assets/icons/I-icon.svg"> -->
+      </div>
+      <div class="icon" (click)="menubar=!menubar; togglesidemenu(menubar)">
+        <img src="assets/icons/menu.svg">
+      </div>
+      <div class="i-icon">
+        <!-- <img src="assets/icons/I-icon.svg"> -->
+      </div>
+      <div class="menu-name">{{site_name}}</div>
+    </div>
+    <div class="side-menu-list">
+      <div class="menu-list">
+        <div class="announcement" *ngIf="menubar && currentUserRole()===userTypeCheck()">
+          <h5>ANNOUNCEMENT</h5>
+          <div class="content">
+            <div class="card-image"> <img src="assets/temp/Capture.PNG"></div>
+            <div class="card-text">Lorem ipsum is simply and dummy text of the test printing...
+              <img src="assets/temp/Capture1.PNG"></div>
+          </div>
+        </div>
+          <div class="menu" (click)="dashboard()">
+            <div class="icon"><img src="assets/icons/home.svg"></div>
+            <div class="menu-name">Dashboard</div>
+          </div>
+          <div class="menu" (click)="port_call_dues()">
+            <div class="icon"><img src="assets/icons/menu/clock.svg"></div>
+            <div class="menu-name">Calculate Port Call Dues</div>
+          </div>
+        <ng-container *ngFor="let menu of menuList ;let i=index">
+            <div class="menu" (click)="selectMenu(menu,i)" [class.selected-menu]="menuBackground(menu,i)">
+              <div class="icon"><img [src]="menu.icon"></div>
+              <div class="menu-name">{{menu.title}}</div>
+            </div>
+          <div class="sub-menu-list" [class.toggle-submenu-list]="menu.submenuVisible" *ngIf="menubar">
+            <div class="sub-menu" *ngFor="let sub of menu.submenu; let j=index"
+              [class.selected-submenu]="submenuBackground(sub,j)" [class.toggle-submenu]="menu.submenuVisible"
+              (click)="selectSubmenu(sub,menu)">
+              <div class="icon"><img [src]="sub.icon"></div>
+              <div class="sub-menu-name">{{sub.title}}</div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

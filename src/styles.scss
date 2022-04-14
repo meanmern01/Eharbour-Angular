@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body{
+    margin: 0;
+}
+
+@import './scss/layout';
+@import './scss/variables';
+@import './scss/bootstrapGrid';
+@import './scss/customInputs';
+@import './scss/commanPopup';
+@import './scss/custom';
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

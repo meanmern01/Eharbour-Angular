@@ -1,0 +1,169 @@
+.gradient-button {
+    background-image: linear-gradient(to right, #d30456, #fb5145, #f78f23);
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 0px;
+    height: 40px;
+    width: 100px;
+}
+.main-class-all-module{
+    position: relative;
+    min-height:100vh;
+
+}
+.pl-50{
+    padding-left:50px;
+}
+.center-body-content{
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+.mat-step-text-label{
+    display: none;
+}
+.text-center{
+    text-align:center;
+}
+.clients-details-page{
+    .mat-expansion-panel-body{
+        padding: 10px 15px 15px;
+        border-top: 1px solid #D8D8D8;
+        margin-top: 7px;
+    }
+}
+// .main-content.toggelOpend{
+//     padding-left: 283px !important;
+// }
+.mat-expansion-indicator{
+    
+    &:after{
+        opacity:0;
+    }
+    &:before{
+        content: "";
+        width: 0px;
+        height: 0px;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid #979797;
+        position: absolute;
+        right: 0px;
+        top: 7px;
+    }
+    &.ng-trigger-indicatorRotate.ng-star-inserted{
+        // transform: rotate(0deg)!important;
+        margin-right: 6px;
+    }
+  
+}
+/* .employeeTable{
+    .mat-table tbody{
+        display: block;
+        min-height: 450px;
+        max-height: 450px;
+        overflow: auto;
+        width: 100%;
+        tr{
+          display: table;
+          width: 100%;
+          table-layout: fixed;
+        }
+    }
+    .mat-table thead{
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+} */
+
+.submenu{
+    .employee-content{
+        .stepper-four-table{
+            .mat-form-field {
+                background-color: #fff !important;
+                border: 0px solid #f0f0f0;
+                position: relative;
+                &:before{
+                    content:'';
+                    background-image: url('/assets/temp/add.svg');
+                    width: 27px;
+                    position: absolute;
+                    z-index: 0;
+                    top: 30px;
+                    height: 20px;
+                    background-repeat: no-repeat;
+                    left: 0;
+                    right: 0;
+                    margin: 0 auto;
+                }
+                .mat-form-field-flex{
+                    background-color: #fff !important;
+                    opacity: 0!important;
+                }
+              }
+
+        }
+        .pagenation-datatable{
+            .mat-form-field{
+              background: #fff!important;
+              border: 0px;
+            }
+          }
+    }
+}
+
+
+
+.mat-select-arrow{
+    color:#fff!important;
+    &:before{
+        content:"";
+        background-image: url('/assets/temp/downArrow.svg');
+        width: 12px;
+        height: 7px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        right: 5px;
+        top: 4px;
+        
+    }
+}
+.employeeTable{
+    .mat-paginator-container{
+        .mat-select-arrow{
+            color:#979797!important;
+            &:before{
+                content: unset;
+            }
+        }
+    }
+}
+.timesheet-content{
+    .timesheet_overflow{
+        .mat-select-arrow{
+            color:#979797!important;
+            &:before{
+                content: unset;
+            }
+        }
+    }
+}
+
+.mat-select-value-text{
+    color: #495057;
+}
+
+
+.project-content {
+    .mat-expansion-panel{
+        box-shadow: unset;
+        border: 1px solid #F0F0F4;
+    }
+    .mat-expansion-panel-header{
+        &:hover{
+            background-color: #fff!important;
+        }
+    }
+}

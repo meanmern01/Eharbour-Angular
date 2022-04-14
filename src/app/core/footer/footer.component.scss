@@ -1,0 +1,27 @@
+.footer{
+  height: 60px;
+  background: linear-gradient(to right, rgb(28 74 150), #031292cb, hsl(130deg 47% 47%));
+  color: white;
+  text-align: center;
+  position: absolute;
+  // bottom: -62px;
+  width: 100%;
+  bottom: 0;
+ 
+  // line-height: 62px;
+  margin-top: 39px;
+  // width: -webkit-fill-available;
+  // flex-grow: 1;
+  p{
+    margin-top: 24px;
+    font-family: Montserrat;
+    font-size: 14px;
+    span{
+      font-weight: 700;
+    }
+  }
+}
+// .footer[_ngcontent-jav-c211] {
+//   position: absolute;
+//   top: 1377px;
+// }

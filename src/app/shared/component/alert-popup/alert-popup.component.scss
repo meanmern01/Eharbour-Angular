@@ -1,0 +1,40 @@
+@import "../../../../scss/variables";
+
+.alert-popup {
+    width: 500px;
+    .text-center {
+        text-align: center;
+    }
+    .center-content {
+        text-align: center;
+        padding: 50px 0;
+        h2 {
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 42px;
+            color: #f01d46;
+            margin-bottom: 0px;
+        }
+        p {
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 42px;
+            color: #122444;
+        }
+    }
+    .no-pad {
+        padding: 0px;
+    }
+    .mat-dialog-actions {
+        min-height: 50px;
+    }
+}
+@media (max-width: 768px) {
+    .leave_approvel {
+        width: auto;
+    }
+}

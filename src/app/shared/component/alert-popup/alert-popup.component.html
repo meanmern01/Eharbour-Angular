@@ -1,0 +1,28 @@
+<div class="alert-popup customPopup">
+  <div class="header">
+    <!-- <mat-card class="title pad-l-4 text-center">Leave Approval</mat-card> -->
+    <div class="close-btn">
+      <div mat-dialog-actions>
+        <button mat-dialog-close>
+          <img src="assets/temp/close.svg">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="center-content">
+    <h2>{{data.title}}</h2>
+    <p>{{data.description}}</p>
+
+  </div>
+
+
+  <div class="footer">
+    <div class="col-xs-12 col-sm-6 col-md-6 no-pad">
+      <button class="btn-approved" mat-raised-button color="primary"  [mat-dialog-close]="true">YES</button>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6 no-pad" mat-dialog-actions>
+        <button class="btn-deny" mat-raised-button [mat-dialog-close]="false" color="primary">NO</button>
+    </div>
+  </div>
+</div>

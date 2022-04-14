@@ -1,0 +1,50 @@
+<div class="container-fluid layout">
+    <div class="customized-containers">
+        <div class="login_box">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+                <div class="vertial-adjust">
+                <div class="logo">
+                    <img src="assets/images/login/logo.png" />
+                    <h1 class="ehms-logo">EHMS</h1>
+                </div>
+                <div class="username_row">
+                    <div class="user_icon">
+                        <img src="assets/images/login/user.svg" />
+                    </div>
+                    <input type="text" class="user_text" placeholder="User Name" formControlName="username" />
+                </div>
+                <div class="validation-errors" *ngIf="getControlValidation('username')">
+                    <span> User Name is required</span>
+                </div>
+                <div class="password_row">
+                    <div class="key-icon">
+                        <img src="assets/images/login/key.svg" />
+                    </div>
+                    <input type="password" class="password_text" placeholder="Password" formControlName="password"/>
+                </div>
+                <div class="validation-errors" *ngIf="getControlValidation('password')">
+                    <span>Password is required</span>
+                </div>
+
+                <div class="checkbox_row">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" formControlName="rememberMe" />
+                        <label class="custom-control-label" >Remember Me</label>
+                    </div>
+                </div>
+
+                <div class="login-button">
+                    <button type="submit">LOGIN</button>
+                </div>
+
+                <!-- <div class="forgot_password">
+                    <label>Forgot Password ?</label>
+                </div> -->
+                <div class="version">
+                    <small> V {{ appVersion }}</small>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

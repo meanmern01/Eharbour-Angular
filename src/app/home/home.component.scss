@@ -1,0 +1,56 @@
+::ng-deep .header {
+
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  clear: both;
+  .card {
+    display: flex;
+    height: auto;
+  //  position: relative;
+    .sub-menu {
+      width: auto;
+    }
+
+    .card-content {
+      background: url(/assets/images/e_harbour_home_16-12-2021.jpg);
+      min-height: calc(100vh - 70px);
+      padding: 30px 30px;
+      width: -webkit-fill-available;
+      height: auto;
+      padding-bottom: 100px;
+      /* background-size: 100% 100%; */
+      /* background-repeat: no-repeat; */
+      background-position: center;
+      background-size: cover;
+     .card-list{
+        border: 1px solid blue;
+        .mat-figure {
+          display: block ;
+        }
+      }
+      .card-item{
+        border: 1px solid rgb(30, 128, 0);
+
+      }
+      // height: 500px;
+      // justify-content: space-evenly;
+      // padding-top: 30px;
+      // padding-left: 30px;
+      // padding-right: 30px;
+      // div:first-child{
+
+      //   width: 45%;
+      //   height: 100%;
+      // }
+      // div:last-child{
+
+      //   width: 45%;
+      //   height: 100%;
+      // }
+    }
+  }
+
+}

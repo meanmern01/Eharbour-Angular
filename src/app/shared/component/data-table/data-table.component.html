@@ -1,0 +1,126 @@
+<div class="employeeData">
+  <div class="toolBar">
+    <ng-container *ngIf="showLeaveSelect == true">
+      <mat-form-field class="leave-select custom-select" appearance="fill">
+        <mat-label class="custom_label">Leave Type</mat-label>
+        <mat-select formControlName="empMultiCtrl">
+          <mat-option class="custom-option" *ngFor="let leaveTypeObject of leaveType"
+            (click)="onClickLeaveType(leaveTypeObject)" value="leaveTypeObject">
+            {{leaveTypeObject}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-container>
+    <input placeholder="Search" #searchBox>
+  </div>
+  <div class="employeeTable">
+    <table mat-table [dataSource]="listData" class="mat-elevation-z8 tblbody350">
+      <ng-container [matColumnDef]="rows" *ngFor="let rows of objectKeys(columnHeader)">
+        <th mat-header-cell *matHeaderCellDef> {{columnHeader[rows].title}} </th>
+        <!-- <td mat-cell *matCellDef="let element"> {{element[columnHeader[rows].property]}}</td>
+        </ng-container> -->
+
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="columnHeader[rows].dataType==='header_name'">
+            <div class="profileCard">
+              <div class="profile" [ngClass]="{'hideDiv': columnHeader[rows].hidden==='value_hide'}">
+                <img src="{{element[columnHeader[rows].property]}}"  onerror="this.src='assets/images/profile.png'">
+              </div>
+              <div>
+                <p>{{element.employee_name}}</p>
+                <p>{{element.employee_code}}</p>
+                <p class="light">{{element.empId}}</p>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-container
+            *ngIf="columnHeader[rows].dataType!='header_name' &&  columnHeader[rows].dataType !=='statusColor' && columnHeader[rows].dataType != 'approval' && columnHeader[rows].dataType !='boxColor' && columnHeader[rows].dataType != 'date'">
+            {{element[columnHeader[rows].property]}}
+          </ng-container>
+
+          <ng-container *ngIf="columnHeader[rows].dataType ==='boxColor'">
+            <div class="box-color" [ngClass]="statusColor(element[columnHeader[rows].property])">
+              {{element[columnHeader[rows].property]}}
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="columnHeader[rows].dataType ==='statusColor'">
+            <div class="status-color" [ngClass]="approveStatusColor(element[columnHeader[rows].property])">
+              {{element[columnHeader[rows].property]}}
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="columnHeader[rows].dataType =='showViewIcon'">
+            <mat-icon class="view-icon" (click)="onClickAction(element, 'view')" aria-hidden="false">visibility
+            </mat-icon>
+          </ng-container>
+
+          <ng-container *ngIf="columnHeader[rows].dataType == 'approval'">
+            <div class="appovel-color" [ngClass]="approvelFilter(element[columnHeader[rows].property])">
+              {{element[columnHeader[rows].property]}} </div>
+          </ng-container>
+
+          <ng-container *ngIf="columnHeader[rows].dataType == 'date'">
+            {{element[columnHeader[rows].property] | date:'dd-MM-yyyy'}}
+          </ng-container>
+
+          <ng-container *ngIf="columnHeader[rows].dataType==='redirect_page'">
+            <mat-icon *ngIf="columnHeader[rows].isviewHide != true && !element.isviewHide" class="cursor check-icon"
+              (click)="onClickAction(element, 'view', true)" aria-hidden="false">search</mat-icon>
+          </ng-container>
+
+          <ng-container *ngIf="columnHeader[rows].dataType==='admin_approve_timesheet'">
+            <mat-icon *ngIf="columnHeader[rows].isviewHide != true && !element.isviewHide" class="cursor check-icon"
+              (click)="onClickApprove(element, 'approve', true)" aria-hidden="false">check</mat-icon>
+            <mat-icon *ngIf="columnHeader[rows].isviewHide != true && !element.isviewHide" class="cursor close-icon"
+              (click)="onClickAction(element, 'view', true)" aria-hidden="false">close</mat-icon>
+          </ng-container>
+
+          <ng-container *ngIf="columnHeader[rows].dataType==='header_action'">
+            <mat-icon *ngIf="columnHeader[rows].isviewHide != true && !element.isviewHide" class="cursor view-icon"
+              (click)="onClickAction(element, 'view', true)" aria-hidden="false">visibility</mat-icon>
+            <mat-icon *ngIf="columnHeader[rows].isEditHide != true && !element.isEditHide" class="cursor edit-icon"
+              (click)="onClickAction(element, 'edit')" aria-hidden="false">edit</mat-icon>
+            <mat-icon *ngIf="columnHeader[rows].isDeleteHide != true && !element.isDeleteHide" class="cursor delete-icon"
+              (click)="onClickAction(element, 'delete')" aria-hidden="false">delete_forever</mat-icon>
+            <img *ngIf="columnHeader[rows].isExitShow == true || element.isExitShow" class="cursor back-icon" src="assets/temp/back.svg" (click)="onClickAction(element, 'delete')">
+              <mat-icon *ngIf="columnHeader[rows].isEmptyShow == true || element.isEmptyShow" aria-hidden="false">remove</mat-icon>
+          </ng-container>
+
+          <ng-container *ngIf="columnHeader[rows].dataType==='view_delete'">
+            <mat-icon *ngIf="columnHeader[rows].isviewHide != true && !element.isviewHide" class="cursor view-icon"
+              (click)="onClickAction(element, 'view', true)" aria-hidden="false">visibility</mat-icon>
+            <mat-icon *ngIf="columnHeader[rows].isDeleteHide != true && !element.isDeleteHide" class="cursor delete-icon"
+              (click)="onClickAction(element, 'delete')" aria-hidden="false">delete_forever</mat-icon>
+            <img *ngIf="columnHeader[rows].isExitShow == true || element.isExitShow" class="cursor back-icon" src="assets/temp/back.svg" (click)="onClickAction(element, 'delete')">
+              <mat-icon *ngIf="columnHeader[rows].isEmptyShow == true || element.isEmptyShow" aria-hidden="false">remove</mat-icon>
+          </ng-container>
+
+          <ng-container *ngIf="columnHeader[rows].dataType==='view_only'">
+            <mat-icon *ngIf="columnHeader[rows].isviewHide != true && !element.isviewHide" class="cursor view-icon"
+              (click)="onClickAction(element, 'view', true)" aria-hidden="false">visibility</mat-icon>
+          </ng-container>
+
+          <ng-container *ngIf="columnHeader[rows].dataType==='new_header'">
+            <mat-icon *ngIf="columnHeader[rows].isviewHide != true && !element.isviewHide" class="cursor view-icon"
+              (click)="onClickAction(element, 'view', true)" aria-hidden="false">visibility</mat-icon>
+            <mat-icon *ngIf="columnHeader[rows].isEditHide != true && !element.isEditHide" class="cursor edit-icon"
+              (click)="onClickAction(element, 'edit')" aria-hidden="false">edit</mat-icon>
+            <mat-icon *ngIf="columnHeader[rows].isDeleteHide != true && !element.isDeleteHide" class="cursor delete-icon"
+              (click)="onClickAction(element, 'delete')" aria-hidden="false">delete_forever</mat-icon>
+            <img *ngIf="columnHeader[rows].isExitShow == true || element.isExitShow" class="cursor back-icon" src="assets/temp/back.svg" (click)="onClickAction(element, 'delete')">
+              <mat-icon *ngIf="columnHeader[rows].isEmptyShow == true || element.isEmptyShow" aria-hidden="false">remove</mat-icon>
+            <!-- <mat-icon *ngIf="columnHeader[rows].isviewHide != true && !element.isviewHide" class="cursor check-icon"
+              (click)="onClickAction(element, 'show', true)" aria-hidden="false">search</mat-icon> -->
+          </ng-container>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="objectKeys(columnHeader)"></tr>
+      <tr mat-row *matRowDef="let row; columns: objectKeys(columnHeader);"></tr>
+    </table>
+    <mat-paginator class="pagenation-datatable" [length]="totalCount" [pageSize]="'10'" [pageSizeOptions]="[10,25,50,100]"
+      (page)="pageEvent($event)">
+    </mat-paginator>
+  </div>
+</div>
